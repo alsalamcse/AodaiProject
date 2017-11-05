@@ -50,7 +50,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
 
 
-    private void createAccount(String email, String passw) {
+    private void createAccount(String email, String passw ) {
         auth.createUserWithEmailAndPassword(email,passw).addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {

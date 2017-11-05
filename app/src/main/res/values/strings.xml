@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Aodai Project</string>
+    <string name="title_activity_maps">Show my lacation on the map</string>
 </resources>

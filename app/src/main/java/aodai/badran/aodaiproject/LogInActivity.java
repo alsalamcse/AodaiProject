@@ -34,19 +34,19 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
         auth = FirebaseAuth.getInstance();
         firebaseUser = auth.getCurrentUser();
         btnlogin.setOnClickListener(this);
-        btnlogin.setOnClickListener(this);
+        btnregister.setOnClickListener(this);
     }
 
 
-    private void signIn(String email, String passw) {
-        auth.signInWithEmailAndPassword(email, passw).addOnCompleteListener(LogInActivity.this, new OnCompleteListener<AuthResult>() {
+    private void signIn(String username, String passw) {
+        auth.signInWithEmailAndPassword(username, passw).addOnCompleteListener(LogInActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     Toast.makeText(LogInActivity.this, "signIn Successful.", Toast.LENGTH_SHORT).show();
-                    //Intent intent = new Intent(LogInActivity.this, MainListActivity.class);
-                    //startActivity(intent);
-                    //finish();
+                    Intent intent = new Intent(LogInActivity.this, MapsActivity.class);
+                    startActivity(intent);
+                    finish();
                 } else {
                     Toast.makeText(LogInActivity.this, "signIn failed." + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     task.getException().printStackTrace();
@@ -59,11 +59,11 @@ public class LogInActivity extends AppCompatActivity implements View.OnClickList
 
 
     private void dataHandler() {
-        String email = eTusername.getText().toString();
+        String username = eTusername.getText().toString();
         String passw = eTpassword.getText().toString();
         boolean isOk = true;//to check if all feilds are filled correctly
 
-        signIn(email, passw);
+        signIn(username, passw);
     }
 
 
