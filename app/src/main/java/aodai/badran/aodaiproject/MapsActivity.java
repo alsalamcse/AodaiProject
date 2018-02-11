@@ -45,25 +45,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
-        mMap.setOnMapClickListener(new GoogleMap.OnMapLongClickListener(){
-            public void OnMapLongClick(LatLng latLng){
-                createMarker(latLng);
-            }
-        });
-
-        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener(){
-            public boolean onMarkerClick(Marker marker) {
-                Toast.makeText(MapsActivity.this, "you click a marker", Toast.LENGTH_SHORT).show();
-                if (marker.equals(sydney)){
-                    Toast.makeText(MapsActivity.this, "you clicked Sydney", Toast.LENGTH_SHORT).show();
-
-            }
-            return false;
-            }
-        });
-
-        mMap.setmylocationenabled(true);
-    }
+        }
 
 
 
