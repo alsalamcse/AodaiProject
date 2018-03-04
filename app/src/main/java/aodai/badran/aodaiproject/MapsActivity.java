@@ -12,9 +12,12 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarkerClickListener,OnMapReadyCallback {
+
+    private static final LatLng DANUN = new LatLng(32.99, 35.15);
 
     private GoogleMap mMap;
+    private Marker mDanun;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,15 +42,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mDanun = mMap.addMarker(new MarkerOptions().position(DANUN).title("Esh Sheikh Danun"));
+        mDanun.setTag(0);
 
-        // Add a marker in Sydney and move the camera
-        final LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
+        mMap.setOnMarkerClickListener(this);
+    }
+    @Override
+    public boolean onMarkerClick(final Marker marker) {
+
+        // Retrieve the data from the marker.
+        Integer clickCount = (Integer) marker.getTag();
+
+        // Check if a click count was set, then display the click count.
+        if (clickCount != null) {
+            clickCount = clickCount + 1;
+            marker.setTag(clickCount);
+            Toast.makeText(this,
+                    marker.getTitle() +
+                            " has been clicked " + clickCount + " times.",
+                    Toast.LENGTH_SHORT).show();
         }
-
-
-
-
+        return false;
+    }
 }
