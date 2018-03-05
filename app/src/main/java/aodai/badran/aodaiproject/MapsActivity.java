@@ -1,7 +1,9 @@
 package aodai.badran.aodaiproject;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -47,7 +49,10 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
 
 
         mMap.setOnMarkerClickListener(this);
+
     }
+
+
     @Override
     public boolean onMarkerClick(final Marker marker) {
 
@@ -58,10 +63,10 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnMarker
         if (clickCount != null) {
             clickCount = clickCount + 1;
             marker.setTag(clickCount);
-            Toast.makeText(this,
-                    marker.getTitle() +
-                            " has been clicked " + clickCount + " times.",
-                    Toast.LENGTH_SHORT).show();
+            Intent mapintent=new Intent(this,ShowPaths.class);
+            startActivity(mapintent);
+            Toast.makeText(this, marker.getTitle() + " has been clicked " + clickCount + " times.", Toast.LENGTH_SHORT).show();
+
         }
         return false;
     }
