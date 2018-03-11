@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="aodai.badran.aodaiproject.ShowPaths">
 
     <ImageButton
         android:id="@+id/IMGBgobacktomap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/ic_menu_mapmode"
+        app:srcCompat="@android:drawable/ic_menu_revert"
         tools:layout_editor_absoluteX="312dp"
         tools:layout_editor_absoluteY="454dp" />
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
